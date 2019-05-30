@@ -1,0 +1,26 @@
+server:
+  port: 9000
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: product-service
+  datasource:
+    password: password
+    url: jdbc:mysql://localhost:3306/demo?useSSL=false
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+  main:
+    allow-bean-definition-overriding: true

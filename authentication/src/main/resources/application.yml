@@ -1,0 +1,45 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: auth-server
+  datasource:
+    password: password
+    url: jdbc:mysql://localhost:3306/demo?useSSL=false
+    username: root
+    jpa:
+      hibernate:
+        ddl-auto: none
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+      show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+#  security:
+#    user:
+#      name: peter
+#      password: pass
+#      roles: USER
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+logging.level.org.springframework.security: DEBUG
+
+
