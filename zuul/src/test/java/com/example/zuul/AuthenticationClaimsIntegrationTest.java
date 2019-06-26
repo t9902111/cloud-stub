@@ -21,7 +21,7 @@ public class AuthenticationClaimsIntegrationTest {
     @Autowired
     private JwtTokenStore tokenStore;
 
-    @Test
+//    @Test
     public void whenTokenDoesNotContainIssuer_thenSuccess() {
         String tokenValue = obtainAccessToken("client", "peter", "pass");
         OAuth2Authentication auth = tokenStore.readAuthentication(tokenValue);
