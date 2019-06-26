@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 7777
 
 spring:
   application:
@@ -17,6 +17,7 @@ spring:
           dialect: org.hibernate.dialect.MySQL5Dialect
       show-sql: true
 
+
 logging:
   level:
     org:
@@ -27,18 +28,18 @@ logging:
             sql:
               BasicBinder: TRACE
 
-#  security:
-#    user:
-#      name: peter
-#      password: pass
-#      roles: USER
-
 eureka:
   client:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+
+# Important!
+security:
+  oauth2:
+    resource:
+      filter-order: 3
 
 logging.level.org.springframework.security: DEBUG
 

@@ -12,6 +12,8 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Configuration
 @EnableResourceServer
 public class ResourceConfig extends ResourceServerConfigurerAdapter {
@@ -21,10 +23,17 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(final HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//            .authorizeRequests()
+//            .antMatchers("/**").authenticated();
         http.csrf().disable()
+            .exceptionHandling()
+            .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+            .and()
             .authorizeRequests()
-//            .antMatchers("/**").permitAll()
-            .antMatchers("/**").authenticated();
+            .anyRequest().authenticated()
+            .and()
+            .httpBasic();
     }
 
     @Override

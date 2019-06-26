@@ -18,6 +18,7 @@ ribbon:
   ReadTimeout: 19000
   ConnectTimeout: 19000
 
+
 #security:
 #  oauth2:
 #    client:

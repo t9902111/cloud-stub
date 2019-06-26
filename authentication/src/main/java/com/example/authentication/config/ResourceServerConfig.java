@@ -15,13 +15,16 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private DefaultTokenServices tokenServices;
 
-//    @Override
-//    public void configure(final HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/oauth/**").permitAll()
-//                .antMatchers("/**").authenticated();
-//    }
+    @Override
+    public void configure(final HttpSecurity http) throws Exception {
+        http.csrf().disable()
+            .exceptionHandling()
+//                .authenticationEntryPoint(new Http401AuthenticationEntryPoint("Bearer realm=\"webrealm\""))
+            .and()
+            .authorizeRequests().anyRequest().authenticated()
+            .and()
+            .httpBasic();
+    }
 
     @Override
     public void configure(ResourceServerSecurityConfigurer config) {
