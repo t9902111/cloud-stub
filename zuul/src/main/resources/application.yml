@@ -9,7 +9,8 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      #defaultZone: http://localhost:8761/eureka
+      defaultZone: http://52.62.128.221:8761/eureka
 
 zuul:
   sensitiveHeaders: Cookie,Set-Cookie
