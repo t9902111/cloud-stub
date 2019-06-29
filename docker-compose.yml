@@ -3,7 +3,7 @@ services:
   eureka:
     image: demo/eureka
     ports:
-    - "8761:8761
+    - "8761:8761"
     networks:
     - cloud-parent
 
