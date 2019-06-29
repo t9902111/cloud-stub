@@ -1,0 +1,20 @@
+version: "3"
+services:
+  eureka:
+    image: demo/eureka
+    ports:
+    - "8761:8761
+    networks:
+    - cloud-parent
+
+  zuul:
+    image: demo/zuul
+    ports:
+    - "8080:8080"
+    networks:
+    - cloud-parent
+    depends_on:
+    - eureka
+
+networks:
+  cloud-parent:
